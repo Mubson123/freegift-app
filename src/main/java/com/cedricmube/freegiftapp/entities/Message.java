@@ -14,24 +14,24 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "\"MESSAGE\"")
+@Table(name = "MESSAGE")
 public class Message {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "\"ID\"", updatable = false)
+  @Column(name = "ID", updatable = false)
   private Long id;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "\"TRANSACTION_ID\"", nullable = false)
+  @JoinColumn(name = "TRANSACTION_ID", nullable = false)
   private Transaction transaction;
 
   @Lob
   @NotNull
-  @Column(name = "\"CONTENT\"", nullable = false)
+  @Column(name = "CONTENT", nullable = false)
   private String content;
 
   @NotNull
-  @Column(name = "\"SEND_DATE\"", nullable = false)
+  @Column(name = "SEND_DATE", nullable = false)
   private Instant sendDate;
 
   @OneToMany(mappedBy = "message", cascade = CascadeType.PERSIST, orphanRemoval = true)
