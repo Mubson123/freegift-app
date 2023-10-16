@@ -13,27 +13,27 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "\"CUSTOMER\"")
+@Table(name = "CUSTOMER")
 public class Customer {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "\"ID\"", updatable = false)
+  @Column(name = "ID", updatable = false)
   private Long id;
 
   @NotNull
-  @Column(name = "\"FIRSTNAME\"", nullable = false, length = 100)
+  @Column(name = "FIRSTNAME", nullable = false, length = 100)
   private String firstname;
 
   @NotNull
-  @Column(name = "\"LASTNAME\"", nullable = false, length = 100)
+  @Column(name = "LASTNAME", nullable = false, length = 100)
   private String lastname;
 
   @NotNull
-  @Column(name = "\"USERNAME\"", nullable = false, length = 100)
+  @Column(name = "USERNAME", nullable = false, length = 100)
   private String username;
 
   @NotNull
-  @Column(name = "\"BIRTHDATE\"", nullable = false)
+  @Column(name = "BIRTHDATE", nullable = false)
   private LocalDate birthdate;
 
   @NotNull
@@ -42,7 +42,13 @@ public class Customer {
   private String email;
 
   @NotNull
-  @Column(name = "\"PHONE_NUMBER\"", nullable = false, length = 50)
+  @Column(name = "PHONE_NUMBER", nullable = false, length = 50)
   private String phoneNumber;
+
+  @OneToOne(mappedBy = "customer", cascade = CascadeType.PERSIST, orphanRemoval = true)
+  private Address address;
+
+  @OneToOne(mappedBy = "customer", cascade = CascadeType.PERSIST, orphanRemoval = true)
+  private User user;
 
 }

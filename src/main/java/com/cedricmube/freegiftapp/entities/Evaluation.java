@@ -10,25 +10,25 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "\"EVALUATION\"")
+@Table(name = "EVALUATION")
 public class Evaluation {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "\"ID\"", updatable = false)
+  @Column(name = "ID", updatable = false)
   private Long id;
 
   @OneToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "\"TRANSACTION_ID\"", nullable = false)
+  @JoinColumn(name = "TRANSACTION_ID", nullable = false)
   private Transaction transaction;
 
   @Lob
   @NotNull
-  @Column(name = "\"RATING\"", nullable = false)
+  @Column(name = "RATING", nullable = false)
   private String rating;
 
   @Lob
   @NotNull
-  @Column(name = "\"DESCRIPTION\"", nullable = false)
+  @Column(name = "DESCRIPTION", nullable = false)
   private String description;
 
 }
